@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elarion Codex | World Map</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { dark: '#0b0d12', codex: '#131722', codexLighter: '#1d2333', gold: '#d4af37', goldDim: '#997a15', parchment: '#f1e4c3' },
+                    fontFamily: { serif: ['"Cormorant Garamond"', 'serif'], heading: ['Cinzel', 'serif'], sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans flex flex-col h-screen select-none overflow-hidden bg-dark text-gray-200">
+    <header class="bg-dark border-b border-gold/30 px-6 py-4 flex justify-between items-center z-40 flex-shrink-0 shadow-lg">
+        <a href="index.html" class="flex items-center space-x-3 cursor-pointer">
+            <svg class="w-9 h-9 text-gold animate-spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            <div>
+                <span class="font-heading text-2xl md:text-3xl font-black tracking-widest text-gold">ELARION</span>
+                <span class="text-xs md:text-sm tracking-[0.25em] text-goldDim block -mt-1 font-heading font-bold">THE IMPERIAL CODEX</span>
+            </div>
+        </a>
+        <nav class="hidden lg:flex items-center space-x-2 font-heading text-sm xl:text-base font-bold tracking-wider">
+            <a href="index.html" class="nav-btn px-4 py-2 rounded text-gold bg-gold/10 border border-gold/40">WORLD MAP</a>
+            <a href="nations.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">NATIONS</a>
+            <a href="cities.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">CITIES</a>
+            <a href="species.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">SPECIES</a>
+            <a href="characters.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">CHARACTERS</a>
+            <a href="timeline.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">TIMELINE</a>
+            <a href="lore.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">LORE</a>
+        </nav>
+        <button onclick="openMobileMenu()" class="lg:hidden text-gold p-2 focus:outline-none">
+            <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </header>
+
+    <div id="mobile-menu-modal" class="fixed inset-0 bg-dark/98 backdrop-blur-2xl z-50 flex flex-col justify-center px-8 space-y-4 transition-all duration-200 opacity-0 pointer-events-none">
+        <button onclick="closeMobileMenu()" class="absolute top-6 right-6 text-gold p-2">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <span class="font-heading text-xs text-goldDim tracking-widest uppercase mb-4 block">Navigation</span>
+        <a href="index.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gold bg-gold/10 border-l-4 border-gold">WORLD MAP</a>
+        <a href="nations.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">NATIONS</a>
+        <a href="cities.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">CITIES</a>
+        <a href="species.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">SPECIES</a>
+        <a href="characters.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">CHARACTERS</a>
+        <a href="timeline.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">TIMELINE</a>
+        <a href="lore.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">LORE</a>
+    </div>
+
+    <main class="relative flex-1 overflow-hidden flex">
+        <section class="w-full h-full relative bg-[#06080c] overflow-auto">
+            <div class="map-grid-wrapper">
+                <img src="photo/world-map.png" alt="Elarion Map" class="w-full h-full object-cover block" onerror="this.src='https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=80&w=1920&auto=format&fit=crop'">
+                <div class="map-marker" style="top: 43%; left: 50%;" onclick="openCity('greenwood')"><div class="pin-point"></div><div class="pin-label">Eternal Greenwood</div></div>
+                <div class="map-marker" style="top: 18%; left: 36%;" onclick="openCity('skyport')"><div class="pin-point"></div><div class="pin-label">Skyport Aetherhold</div></div>
+                <div class="map-marker" style="top: 17%; left: 63%;" onclick="openCity('frostpeak')"><div class="pin-point"></div><div class="pin-label">Frostpeak Citadel</div></div>
+                <div class="map-marker" style="top: 37%; left: 30%;" onclick="openCity('diamondreach')"><div class="pin-point"></div><div class="pin-label">Diamondreach</div></div>
+                <div class="map-marker" style="top: 60%; left: 18%;" onclick="openCity('shardforge')"><div class="pin-point"></div><div class="pin-label">The Shard-Forge</div></div>
+                <div class="map-marker" style="top: 71%; left: 42%;" onclick="openCity('roottide')"><div class="pin-point"></div><div class="pin-label">Root-Tide Delta</div></div>
+                <div class="map-marker" style="top: 44%; left: 80%;" onclick="openCity('sunspire')"><div class="pin-point"></div><div class="pin-label">Sunspire</div></div>
+                <div class="map-marker" style="top: 56%; left: 69%;" onclick="openCity('zahar')"><div class="pin-point"></div><div class="pin-label">Oasis of Zahar</div></div>
+                <div class="map-marker" style="top: 76%; left: 64%;" onclick="openCity('stormhold')"><div class="pin-point"></div><div class="pin-label">Stormhold</div></div>
+                <div class="map-marker" style="top: 88%; left: 53%;" onclick="openCity('vestige')"><div class="pin-point"></div><div class="pin-label">Isle of Vestiges</div></div>
+            </div>
+            <div class="absolute bottom-6 left-6 pointer-events-none bg-dark/90 backdrop-blur border border-gold/40 p-3.5 rounded max-w-[280px] sm:max-w-xs shadow-2xl">
+                <span class="font-heading text-gold text-xs sm:text-sm font-bold block">ELARION CHART</span>
+                <span class="font-serif text-xs text-gray-300 mt-1 block leading-snug">Tap any gilded coordinate marker to inspect regional data.</span>
+            </div>
+        </section>
+        <aside id="city-panel" class="absolute top-0 right-0 w-full md:w-[600px] lg:w-[680px] h-full bg-codex border-l border-gold/40 z-50 transform translate-x-full transition-transform duration-300 ease-out flex flex-col shadow-2xl">
+            <div class="relative h-64 sm:h-72 w-full flex-shrink-0 bg-dark overflow-hidden">
+                <img id="panel-hero" src="" alt="City Art" class="w-full h-full object-cover filter brightness-90">
+                <div class="absolute inset-0 bg-gradient-to-t from-codex via-black/40 to-black/70"></div>
+                <button onclick="closeCityPanel()" class="absolute top-5 right-5 bg-dark/90 text-gold border border-gold/50 p-3 rounded-full z-10"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+                <div class="absolute bottom-6 left-8 right-8">
+                    <span id="panel-nation" class="text-xs sm:text-sm uppercase tracking-widest text-gold font-heading font-extrabold"></span>
+                    <h2 id="panel-title" class="font-heading text-3xl sm:text-5xl text-white font-black tracking-wide gold-glow truncate mt-1"></h2>
+                </div>
+            </div>
+            <div class="flex-1 overflow-y-auto p-6 sm:p-8 space-y-8">
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 p-5 bg-codexLighter gold-border rounded font-heading tracking-wider">
+                    <div><span class="text-gray-400 block text-[11px]">REGION</span><span id="q-region" class="text-parchment font-bold text-sm sm:text-base"></span></div>
+                    <div><span class="text-gray-400 block text-[11px]">POPULATION</span><span id="q-pop" class="text-parchment font-bold text-sm sm:text-base"></span></div>
+                    <div><span class="text-gray-400 block text-[11px]">GOVERNMENT</span><span id="q-gov" class="text-parchment font-bold text-sm sm:text-base"></span></div>
+                    <div><span class="text-gray-400 block text-[11px]">MAIN SPECIES</span><span id="q-spec" class="text-parchment font-bold text-sm sm:text-base"></span></div>
+                    <div class="col-span-2"><span class="text-gray-400 block text-[11px]">MAIN EXPORTS</span><span id="q-exp" class="text-parchment font-bold text-sm sm:text-base"></span></div>
+                </div>
+                <div><h3 class="font-heading text-gold text-xl border-b border-gold/20 pb-1 mb-2 flex items-center gap-2"><i data-lucide="eye" class="w-5 h-5 text-gold"></i> Appearance</h3><p id="panel-desc" class="font-serif text-lg sm:text-xl text-gray-200 leading-relaxed italic"></p></div>
+                <div><h3 class="font-heading text-gold text-xl border-b border-gold/20 pb-1 mb-3 flex items-center gap-2"><i data-lucide="users" class="w-5 h-5 text-gold"></i> Dominant Species</h3><div id="panel-species-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div></div>
+                <div class="bg-codexLighter p-6 rounded gold-border">
+                    <h3 class="font-heading text-gold text-xl border-b border-gold/20 pb-1 mb-3 flex items-center gap-2"><i data-lucide="coins" class="w-5 h-5 text-gold"></i> Economy & Commerce</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-sans">
+                        <div><strong class="text-parchment block mb-1 font-heading">Primary Resources:</strong><span id="eco-res" class="text-gray-300"></span></div>
+                        <div><strong class="text-parchment block mb-1 font-heading">Major Imports:</strong><span id="eco-imp" class="text-gray-300"></span></div>
+                        <div class="sm:col-span-2"><strong class="text-parchment block mb-1 font-heading">Key Trade Partners:</strong><span id="eco-part" class="text-gray-300"></span></div>
+                    </div>
+                </div>
+                <div><h3 class="font-heading text-gold text-xl border-b border-gold/20 pb-1 mb-3 flex items-center gap-2"><i data-lucide="landmark" class="w-5 h-5 text-gold"></i> Major Landmarks</h3><div id="panel-landmarks" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div></div>
+                <div><h3 class="font-heading text-gold text-xl border-b border-gold/20 pb-1 mb-3 flex items-center gap-2"><i data-lucide="crown" class="w-5 h-5 text-gold"></i> Key Figureheads</h3><div id="panel-characters" class="space-y-4"></div></div>
+                <div><h3 class="font-heading text-gold text-xl border-b border-gold/20 pb-1 mb-2 flex items-center gap-2"><i data-lucide="book-open" class="w-5 h-5 text-gold"></i> Culture & Traditions</h3><p id="panel-culture" class="font-serif text-lg text-gray-300 leading-relaxed"></p></div>
+                <div><h3 class="font-heading text-gold text-xl border-b border-gold/20 pb-1 mb-3 flex items-center gap-2"><i data-lucide="flag" class="w-5 h-5 text-gold"></i> Geopolitical Stance</h3><div id="panel-relations" class="flex flex-wrap gap-2.5 pt-1 font-heading text-xs"></div></div>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="bg-dark border-t border-gold/20 px-6 py-2.5 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-400 z-40 flex-shrink-0">
+        <div class="flex items-center space-x-2"><span class="font-heading text-gold font-bold">ELARION</span><span class="text-gray-600">|</span><span> Imperial Archives Vol. I</span></div>
+        <div class="flex items-center space-x-4 mt-1 sm:mt-0">
+            <span>Archivist: <strong class="text-parchment font-heading">Cappy Bara</strong></span>
+            <a href="https://tiktok.com/@cappy_ez01" target="_blank" class="text-goldDim hover:text-gold transition-colors flex items-center gap-1" title="Visit Creator's TikTok">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.06z"/></svg>
+                <span class="text-[11px] underline">TikTok</span>
+            </a>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

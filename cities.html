@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elarion Codex | Metropolitan Centers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { dark: '#0b0d12', codex: '#131722', codexLighter: '#1d2333', gold: '#d4af37', goldDim: '#997a15', parchment: '#f1e4c3' },
+                    fontFamily: { serif: ['"Cormorant Garamond"', 'serif'], heading: ['Cinzel', 'serif'], sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans flex flex-col h-screen select-none bg-dark text-gray-200">
+    <header class="bg-dark border-b border-gold/30 px-6 py-4 flex justify-between items-center z-40 flex-shrink-0 shadow-lg">
+        <a href="index.html" class="flex items-center space-x-3 cursor-pointer">
+            <svg class="w-9 h-9 text-gold animate-spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            <div>
+                <span class="font-heading text-2xl md:text-3xl font-black tracking-widest text-gold">ELARION</span>
+                <span class="text-xs md:text-sm tracking-[0.25em] text-goldDim block -mt-1 font-heading font-bold">THE IMPERIAL CODEX</span>
+            </div>
+        </a>
+        <nav class="hidden lg:flex items-center space-x-2 font-heading text-sm xl:text-base font-bold tracking-wider">
+            <a href="index.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">WORLD MAP</a>
+            <a href="nations.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">NATIONS</a>
+            <a href="cities.html" class="nav-btn px-4 py-2 rounded text-gold bg-gold/10 border border-gold/40">CITIES</a>
+            <a href="species.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">SPECIES</a>
+            <a href="characters.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">CHARACTERS</a>
+            <a href="timeline.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">TIMELINE</a>
+            <a href="lore.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">LORE</a>
+        </nav>
+        <button onclick="openMobileMenu()" class="lg:hidden text-gold p-2 focus:outline-none">
+            <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </header>
+
+    <div id="mobile-menu-modal" class="fixed inset-0 bg-dark/98 backdrop-blur-2xl z-50 flex flex-col justify-center px-8 space-y-4 transition-all duration-200 opacity-0 pointer-events-none">
+        <button onclick="closeMobileMenu()" class="absolute top-6 right-6 text-gold p-2">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <span class="font-heading text-xs text-goldDim tracking-widest uppercase mb-4 block">Navigation</span>
+        <a href="index.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">WORLD MAP</a>
+        <a href="nations.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">NATIONS</a>
+        <a href="cities.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gold bg-gold/10 border-l-4 border-gold">CITIES</a>
+        <a href="species.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">SPECIES</a>
+        <a href="characters.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">CHARACTERS</a>
+        <a href="timeline.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">TIMELINE</a>
+        <a href="lore.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">LORE</a>
+    </div>
+
+    <main class="relative flex-1 overflow-y-auto bg-dark p-8 sm:p-12">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="border-b border-gold/30 pb-6">
+                <span class="text-goldDim font-heading tracking-[0.25em] text-xs font-bold block">URBAN DIRECTORY</span>
+                <h1 class="font-heading text-4xl sm:text-5xl text-gold font-black tracking-wide mt-1">The Major Metropolitan Centers</h1>
+                <p class="font-serif text-gray-300 text-lg mt-2">A comprehensive gazetteer of the ten anchored bastions surviving across Elarion's harsh topography.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-codex gold-border rounded-lg overflow-hidden flex flex-col justify-between">
+                    <div class="h-48 bg-dark relative">
+                        <img src="https://images.unsplash.com/photo-1511497584788-87676104235f?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover filter brightness-75" alt="Greenwood">
+                        <span class="absolute bottom-3 left-3 bg-dark/90 text-gold px-2.5 py-1 rounded text-xs font-heading font-bold gold-border">Independent</span>
+                    </div>
+                    <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-emerald-400 font-heading font-bold">The Primordial Heartlands</span>
+                            <h3 class="font-heading text-2xl text-parchment font-bold">Eternal Greenwood</h3>
+                            <p class="font-serif text-gray-300 text-sm mt-2 italic">"A metropolis woven directly into iron-oaks, lit by hanging clusters of glowing blue moss."</p>
+                        </div>
+                        <div class="pt-4 border-t border-gold/10 text-xs space-y-1 text-gray-400 font-sans">
+                            <div><strong class="text-parchment">Population:</strong> approx. 140,000</div>
+                            <div><strong class="text-parchment">Governed by:</strong> Circle of Elder Druids</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-codex gold-border rounded-lg overflow-hidden flex flex-col justify-between">
+                    <div class="h-48 bg-dark relative">
+                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover filter brightness-75" alt="Frostpeak">
+                        <span class="absolute bottom-3 left-3 bg-dark/90 text-gold px-2.5 py-1 rounded text-xs font-heading font-bold gold-border">Frostbound Dominion</span>
+                    </div>
+                    <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-blue-400 font-heading font-bold">The Shardspine Mountains</span>
+                            <h3 class="font-heading text-2xl text-parchment font-bold">Frostpeak Citadel</h3>
+                            <p class="font-serif text-gray-300 text-sm mt-2 italic">"Carved into the sheer face of a frozen peak where massive pipes spew white geothermal steam over icy cliffs."</p>
+                        </div>
+                        <div class="pt-4 border-t border-gold/10 text-xs space-y-1 text-gray-400 font-sans">
+                            <div><strong class="text-parchment">Population:</strong> 85,000</div>
+                            <div><strong class="text-parchment">Governed by:</strong> Martial Engineering Admiralty</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-codex gold-border rounded-lg overflow-hidden flex flex-col justify-between">
+                    <div class="h-48 bg-dark relative">
+                        <img src="https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover filter brightness-75" alt="Skyport">
+                        <span class="absolute bottom-3 left-3 bg-dark/90 text-gold px-2.5 py-1 rounded text-xs font-heading font-bold gold-border">Frostbound Dominion</span>
+                    </div>
+                    <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-cyan-400 font-heading font-bold">The High Zephyr Plateaus</span>
+                            <h3 class="font-heading text-2xl text-parchment font-bold">Skyport Aetherhold</h3>
+                            <p class="font-serif text-gray-300 text-sm mt-2 italic">"A multi-tiered floating city suspended over the clouds by four colossal anchoring chains of enchanted titanium."</p>
+                        </div>
+                        <div class="pt-4 border-t border-gold/10 text-xs space-y-1 text-gray-400 font-sans">
+                            <div><strong class="text-parchment">Population:</strong> 210,000</div>
+                            <div><strong class="text-parchment">Governed by:</strong> The Sky-Merchant Syndicate</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-codex gold-border rounded-lg overflow-hidden flex flex-col justify-between">
+                    <div class="h-48 bg-dark relative">
+                        <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover filter brightness-75" alt="Diamondreach">
+                        <span class="absolute bottom-3 left-3 bg-dark/90 text-gold px-2.5 py-1 rounded text-xs font-heading font-bold gold-border">Emberfall Magocracy</span>
+                    </div>
+                    <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-orange-400 font-heading font-bold">The Obsidian Caldera</span>
+                            <h3 class="font-heading text-2xl text-parchment font-bold">Diamondreach</h3>
+                            <p class="font-serif text-gray-300 text-sm mt-2 italic">"Slender, asymmetrical towers of pale white crystal jutting out of the dark obsidian volcanic floor."</p>
+                        </div>
+                        <div class="pt-4 border-t border-gold/10 text-xs space-y-1 text-gray-400 font-sans">
+                            <div><strong class="text-parchment">Population:</strong> 95,000</div>
+                            <div><strong class="text-parchment">Governed by:</strong> The Prime Arch-Mages</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-codex gold-border rounded-lg overflow-hidden flex flex-col justify-between">
+                    <div class="h-48 bg-dark relative">
+                        <img src="https://images.unsplash.com/photo-1542224566-6e85f2e6772f?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover filter brightness-75" alt="Shard-Forge">
+                        <span class="absolute bottom-3 left-3 bg-dark/90 text-gold px-2.5 py-1 rounded text-xs font-heading font-bold gold-border">Emberfall Magocracy</span>
+                    </div>
+                    <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-amber-500 font-heading font-bold">The Basalt Basin</span>
+                            <h3 class="font-heading text-2xl text-parchment font-bold">The Shard-Forge</h3>
+                            <p class="font-serif text-gray-300 text-sm mt-2 italic">"A heavy, circular fortress dropped directly into a depression where glowing crystals the size of cathedrals jut out."</p>
+                        </div>
+                        <div class="pt-4 border-t border-gold/10 text-xs space-y-1 text-gray-400 font-sans">
+                            <div><strong class="text-parchment">Population:</strong> 42,000</div>
+                            <div><strong class="text-parchment">Governed by:</strong> The Overseer Guild</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-codex gold-border rounded-lg overflow-hidden flex flex-col justify-between">
+                    <div class="h-48 bg-dark relative">
+                        <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover filter brightness-75" alt="Root-Tide">
+                        <span class="absolute bottom-3 left-3 bg-dark/90 text-gold px-2.5 py-1 rounded text-xs font-heading font-bold gold-border">Independent</span>
+                    </div>
+                    <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-emerald-300 font-heading font-bold">The Southern Silt-Mouth</span>
+                            <h3 class="font-heading text-2xl text-parchment font-bold">Root-Tide Delta</h3>
+                            <p class="font-serif text-gray-300 text-sm mt-2 italic">"A sprawling network of lashed-together barges and stilt-houses perched where the freshwater river hits the sea."</p>
+                        </div>
+                        <div class="pt-4 border-t border-gold/10 text-xs space-y-1 text-gray-400 font-sans">
+                            <div><strong class="text-parchment">Population:</strong> 31,000</div>
+                            <div><strong class="text-parchment">Governed by:</strong> The Harbormaster's Coalition</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="bg-codex gold-border rounded-lg overflow-hidden flex flex-col justify-between">
+                    <div class="h-48 bg-dark relative">
+                        <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover filter brightness-75" alt="Sunspire">
+                        <span class="absolute bottom-3 left-3 bg-dark/90 text-gold px-2.5 py-1 rounded text-xs font-heading font-bold gold-border">Golden Dunes Confederacy</span>
+                    </div>
+                    <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-amber-400 font-heading font-bold">The Scorched Wastes</span>
+                            <h3 class="font-heading text-2xl text-parchment font-bold">Sunspire</h3>
+                            <p class="font-serif text-gray-300 text-sm mt-2 italic">"A blindingly golden desert megalopolis centered around a 900-meter needle of solid polished brass."</p>
+                        </div>
+                        <div class="pt-4 border-t border-gold/10 text-xs space-y-1 text-gray-400 font-sans">
+                            <div><strong class="text-parchment">Population:</strong> 320,000</div>
+                            <div><strong class="text-parchment">Governed by:</strong> The Solar Oligarchy</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="bg-codex gold-border rounded-lg overflow-hidden flex flex-col justify-between">
+                    <div class="h-48 bg-dark relative">
+                        <img src="https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover filter brightness-75" alt="Zahar">
+                        <span class="absolute bottom-3 left-3 bg-dark/90 text-gold px-2.5 py-1 rounded text-xs font-heading font-bold gold-border">Golden Dunes Confederacy</span>
+                    </div>
+                    <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-amber-300 font-heading font-bold">The Shifting Sea of Sand</span>
+                            <h3 class="font-heading text-2xl text-parchment font-bold">Oasis of Zahar</h3>
+                            <p class="font-serif text-gray-300 text-sm mt-2 italic">"A wildly vibrant tent-city blooming around an impossible lake of crystal-blue freshwater in the dead center of the deep desert."</p>
+                        </div>
+                        <div class="pt-4 border-t border-gold/10 text-xs space-y-1 text-gray-400 font-sans">
+                            <div><strong class="text-parchment">Population:</strong> 190,000</div>
+                            <div><strong class="text-parchment">Governed by:</strong> The Grand Bazaar Directorate</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="bg-codex gold-border rounded-lg overflow-hidden flex flex-col justify-between">
+                    <div class="h-48 bg-dark relative">
+                        <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover filter brightness-75" alt="Stormhold">
+                        <span class="absolute bottom-3 left-3 bg-dark/90 text-gold px-2.5 py-1 rounded text-xs font-heading font-bold gold-border">Tempest Maritime Union</span>
+                    </div>
+                    <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-cyan-400 font-heading font-bold">The Thundering Coast</span>
+                            <h3 class="font-heading text-2xl text-parchment font-bold">Stormhold</h3>
+                            <p class="font-serif text-gray-300 text-sm mt-2 italic">"A brutal, salt-bleached fortress slammed into black sea-cliffs where giant iron rods catch non-stop typhoon lightning."</p>
+                        </div>
+                        <div class="pt-4 border-t border-gold/10 text-xs space-y-1 text-gray-400 font-sans">
+                            <div><strong class="text-parchment">Population:</strong> 165,000</div>
+                            <div><strong class="text-parchment">Governed by:</strong> The Sovereign Fleet Captains</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 10 -->
+                <div class="bg-codex gold-border rounded-lg overflow-hidden flex flex-col justify-between">
+                    <div class="h-48 bg-dark relative">
+                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover filter brightness-75" alt="Vestiges">
+                        <span class="absolute bottom-3 left-3 bg-dark/90 text-gold px-2.5 py-1 rounded text-xs font-heading font-bold gold-border">Unclaimed Territory</span>
+                    </div>
+                    <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-purple-400 font-heading font-bold">The Drowned Reach</span>
+                            <h3 class="font-heading text-2xl text-parchment font-bold">Isle of Vestiges</h3>
+                            <p class="font-serif text-gray-300 text-sm mt-2 italic">"A massive ancient stone ruin jutting out of the open southern ocean housing a paranoid cluster of research tents."</p>
+                        </div>
+                        <div class="pt-4 border-t border-gold/10 text-xs space-y-1 text-gray-400 font-sans">
+                            <div><strong class="text-parchment">Population:</strong> approx. 1,200</div>
+                            <div><strong class="text-parchment">Governed by:</strong> Joint Archaeological Expedition</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark border-t border-gold/20 px-6 py-2.5 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-400 z-40 flex-shrink-0">
+        <div class="flex items-center space-x-2"><span class="font-heading text-gold font-bold">ELARION</span><span class="text-gray-600">|</span><span> Imperial Archives Vol. I</span></div>
+        <div class="flex items-center space-x-4 mt-1 sm:mt-0">
+            <span>Archivist: <strong class="text-parchment font-heading">Cappy Bara</strong></span>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

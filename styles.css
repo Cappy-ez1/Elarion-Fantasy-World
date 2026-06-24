@@ -1,0 +1,91 @@
+body {
+    background-color: #0b0d12;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.gold-border {
+    border-image: linear-gradient(to bottom right, #d4af37 0%, #ffe58f 50%, #997a15 100%) 1;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.gold-glow {
+    text-shadow: 0 0 16px rgba(212, 175, 55, 0.45);
+}
+
+/* Custom Dark Scrollbars */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0b0d12;
+}
+::-webkit-scrollbar-thumb {
+    background: #997a15;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #d4af37;
+}
+
+/* THE WELDED WRAPPER */
+.map-grid-wrapper {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    min-width: 1100px;
+    max-width: 1920px;
+    aspect-ratio: 16 / 9;
+}
+
+@keyframes pinPulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.8); }
+    70% { transform: scale(1.15); box-shadow: 0 0 0 18px rgba(212, 175, 55, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+.map-marker {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 20;
+    padding: 18px;
+}
+
+.map-marker .pin-point {
+    width: 24px;
+    height: 24px;
+    background: radial-gradient(circle, #fff6cc 0%, #d4af37 60%, #806000 100%);
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    animation: pinPulse 2.5s infinite;
+    box-shadow: 0 0 10px #d4af37;
+}
+
+@media (hover: hover) {
+    .map-marker:hover { z-index: 40; }
+    .map-marker:hover .pin-point { transform: scale(1.45); border-color: #ffffff; animation: none; }
+    .map-marker:hover .pin-label { opacity: 1; transform: translateX(-50%) translateY(0px); }
+}
+
+.pin-label {
+    position: absolute;
+    top: 38px;
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background-color: rgba(11, 13, 18, 0.96);
+    border: 1px solid #d4af37;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    color: #ffe58f;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s ease-out;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.9);
+}

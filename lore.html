@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elarion Codex | Esoteric Lore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { dark: '#0b0d12', codex: '#131722', codexLighter: '#1d2333', gold: '#d4af37', goldDim: '#997a15', parchment: '#f1e4c3' },
+                    fontFamily: { serif: ['"Cormorant Garamond"', 'serif'], heading: ['Cinzel', 'serif'], sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans flex flex-col h-screen select-none bg-dark text-gray-200">
+    <header class="bg-dark border-b border-gold/30 px-6 py-4 flex justify-between items-center z-40 flex-shrink-0 shadow-lg">
+        <a href="index.html" class="flex items-center space-x-3 cursor-pointer">
+            <svg class="w-9 h-9 text-gold animate-spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            <div>
+                <span class="font-heading text-2xl md:text-3xl font-black tracking-widest text-gold">ELARION</span>
+                <span class="text-xs md:text-sm tracking-[0.25em] text-goldDim block -mt-1 font-heading font-bold">THE IMPERIAL CODEX</span>
+            </div>
+        </a>
+        <nav class="hidden lg:flex items-center space-x-2 font-heading text-sm xl:text-base font-bold tracking-wider">
+            <a href="index.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">WORLD MAP</a>
+            <a href="nations.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">NATIONS</a>
+            <a href="cities.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">CITIES</a>
+            <a href="species.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">SPECIES</a>
+            <a href="characters.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">CHARACTERS</a>
+            <a href="timeline.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">TIMELINE</a>
+            <a href="lore.html" class="nav-btn px-4 py-2 rounded text-gold bg-gold/10 border border-gold/40">LORE</a>
+        </nav>
+        <button onclick="openMobileMenu()" class="lg:hidden text-gold p-2 focus:outline-none">
+            <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </header>
+
+    <div id="mobile-menu-modal" class="fixed inset-0 bg-dark/98 backdrop-blur-2xl z-50 flex flex-col justify-center px-8 space-y-4 transition-all duration-200 opacity-0 pointer-events-none">
+        <button onclick="closeMobileMenu()" class="absolute top-6 right-6 text-gold p-2">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <span class="font-heading text-xs text-goldDim tracking-widest uppercase mb-4 block">Navigation</span>
+        <a href="index.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">WORLD MAP</a>
+        <a href="nations.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">NATIONS</a>
+        <a href="cities.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">CITIES</a>
+        <a href="species.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">SPECIES</a>
+        <a href="characters.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">CHARACTERS</a>
+        <a href="timeline.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">TIMELINE</a>
+        <a href="lore.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gold bg-gold/10 border-l-4 border-gold">LORE</a>
+    </div>
+
+    <main class="relative flex-1 overflow-y-auto bg-dark p-8 sm:p-12">
+        <div class="max-w-5xl mx-auto space-y-12">
+            <div class="border-b border-gold/30 pb-6">
+                <span class="text-goldDim font-heading tracking-[0.25em] text-xs font-bold block">ESOTERIC METAPHYSICS</span>
+                <h1 class="font-heading text-4xl sm:text-5xl text-gold font-black tracking-wide mt-1">The Lore Archives</h1>
+                <p class="font-serif text-gray-300 text-lg mt-2">Imagine the whispered secrets kept strictly locked inside the sub-basement vaults of the Prism Library.</p>
+            </div>
+            
+            <div class="space-y-8">
+                <!-- Lore Pillar 1 -->
+                <div class="bg-codex p-8 rounded-lg gold-border">
+                    <span class="text-purple-400 font-heading text-xs font-bold tracking-widest block mb-1">ARCHIVE TRUTH NO. 01</span>
+                    <h2 class="font-heading text-3xl text-parchment font-bold">The Anatomy of the Sky (The Aether)</h2>
+                    <p class="font-serif text-gray-200 text-lg mt-4 leading-relaxed">
+                        Imagine that the "Aether" isn't an element at all, but the pulverized, floating dust of the dead Progenitor Gods. When an airship burns Aether-fuel to keep its galleons aloft, it is literally boiling the ground-up bones of the divine to achieve lift. This is why high-altitude sailors eventually hear voices in the static.
+                    </p>
+                </div>
+                <!-- Lore Pillar 2 -->
+                <div class="bg-codex p-8 rounded-lg gold-border">
+                    <span class="text-emerald-400 font-heading text-xs font-bold tracking-widest block mb-1">ARCHIVE TRUTH NO. 02</span>
+                    <h2 class="font-heading text-3xl text-parchment font-bold">The Parasite Hypothesis</h2>
+                    <p class="font-serif text-gray-200 text-lg mt-4 leading-relaxed">
+                        Imagine the terrifying theory held by the rogue scholars at the Isle of Vestiges: the World Tree did not sprout to save Elarion. It is a cosmic, invasive weed. Its gargantuan roots are slowly drinking the planet's remaining molten iron core. When the core is fully drained, the Tree will flower, cast its seeds into the cosmos, and let Elarion crumble into cold dust.
+                    </p>
+                </div>
+                <!-- Lore Pillar 3 -->
+                <div class="bg-codex p-8 rounded-lg gold-border">
+                    <span class="text-amber-400 font-heading text-xs font-bold tracking-widest block mb-1">ARCHIVE TRUTH NO. 03</span>
+                    <h2 class="font-heading text-3xl text-parchment font-bold">The Currency of the Damned</h2>
+                    <p class="font-serif text-gray-200 text-lg mt-4 leading-relaxed">
+                        Imagine why the Oasis of Zahar never runs dry despite sitting in a 60°C desert. The water is not fed by rain; it is the liquefied, purified memories of every mortal who dies at sea. To drink from the Oasis is to extend your life by swallowing the forgotten birthdays, first kisses, and dying regrets of a drowned sailor.
+                    </p>
+                </div>
+                <!-- Lore Pillar 4 (Added) -->
+                <div class="bg-codex p-8 rounded-lg gold-border">
+                    <span class="text-orange-400 font-heading text-xs font-bold tracking-widest block mb-1">ARCHIVE TRUTH NO. 04</span>
+                    <h2 class="font-heading text-3xl text-parchment font-bold">Corporate Arcana & Spell Patents</h2>
+                    <p class="font-serif text-gray-200 text-lg mt-4 leading-relaxed">
+                        Imagine a society where magic is treated as intellectual property. Within Emberfall, evokers patent specific wavelengths of thermodynamic heat. To cast an unpatented incantation without paying a corporate spell-syndicate royalty results in immediate arcane audits via hard-light hunter automata.
+                    </p>
+                </div>
+                <!-- Lore Pillar 5 (Added) -->
+                <div class="bg-codex p-8 rounded-lg gold-border">
+                    <span class="text-blue-400 font-heading text-xs font-bold tracking-widest block mb-1">ARCHIVE TRUTH NO. 05</span>
+                    <h2 class="font-heading text-3xl text-parchment font-bold">The Maw-Gate Iron Typhoons</h2>
+                    <p class="font-serif text-gray-200 text-lg mt-4 leading-relaxed">
+                        Imagine the perpetual coastal violence of Stormhold. The massive bronze sea-serpent jaws known as the Maw-Gate do not merely close to keep out enemy armadas; they clamp shut during seasonal typhoons to seal forty lashed-together frigates over a pressurized reserve of super-refined leviathan oil.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark border-t border-gold/20 px-6 py-2.5 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-400 z-40 flex-shrink-0">
+        <div class="flex items-center space-x-2"><span class="font-heading text-gold font-bold">ELARION</span><span class="text-gray-600">|</span><span> Imperial Archives Vol. I</span></div>
+        <div class="flex items-center space-x-4 mt-1 sm:mt-0">
+            <span>Archivist: <strong class="text-parchment font-heading">Cappy Bara</strong></span>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

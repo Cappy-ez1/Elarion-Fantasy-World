@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elarion Codex | Dramatis Personae</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { dark: '#0b0d12', codex: '#131722', codexLighter: '#1d2333', gold: '#d4af37', goldDim: '#997a15', parchment: '#f1e4c3' },
+                    fontFamily: { serif: ['"Cormorant Garamond"', 'serif'], heading: ['Cinzel', 'serif'], sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans flex flex-col h-screen select-none bg-dark text-gray-200">
+    <header class="bg-dark border-b border-gold/30 px-6 py-4 flex justify-between items-center z-40 flex-shrink-0 shadow-lg">
+        <a href="index.html" class="flex items-center space-x-3 cursor-pointer">
+            <svg class="w-9 h-9 text-gold animate-spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            <div>
+                <span class="font-heading text-2xl md:text-3xl font-black tracking-widest text-gold">ELARION</span>
+                <span class="text-xs md:text-sm tracking-[0.25em] text-goldDim block -mt-1 font-heading font-bold">THE IMPERIAL CODEX</span>
+            </div>
+        </a>
+        <nav class="hidden lg:flex items-center space-x-2 font-heading text-sm xl:text-base font-bold tracking-wider">
+            <a href="index.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">WORLD MAP</a>
+            <a href="nations.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">NATIONS</a>
+            <a href="cities.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">CITIES</a>
+            <a href="species.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">SPECIES</a>
+            <a href="characters.html" class="nav-btn px-4 py-2 rounded text-gold bg-gold/10 border border-gold/40">CHARACTERS</a>
+            <a href="timeline.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">TIMELINE</a>
+            <a href="lore.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">LORE</a>
+        </nav>
+        <button onclick="openMobileMenu()" class="lg:hidden text-gold p-2 focus:outline-none">
+            <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </header>
+
+    <div id="mobile-menu-modal" class="fixed inset-0 bg-dark/98 backdrop-blur-2xl z-50 flex flex-col justify-center px-8 space-y-4 transition-all duration-200 opacity-0 pointer-events-none">
+        <button onclick="closeMobileMenu()" class="absolute top-6 right-6 text-gold p-2">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <span class="font-heading text-xs text-goldDim tracking-widest uppercase mb-4 block">Navigation</span>
+        <a href="index.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">WORLD MAP</a>
+        <a href="nations.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">NATIONS</a>
+        <a href="cities.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">CITIES</a>
+        <a href="species.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">SPECIES</a>
+        <a href="characters.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gold bg-gold/10 border-l-4 border-gold">CHARACTERS</a>
+        <a href="timeline.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">TIMELINE</a>
+        <a href="lore.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">LORE</a>
+    </div>
+
+    <main class="relative flex-1 overflow-y-auto bg-dark p-8 sm:p-12">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="border-b border-gold/30 pb-6">
+                <span class="text-goldDim font-heading tracking-[0.25em] text-xs font-bold block">DRAMATIS PERSONAE (REF YEAR: 1244 A.C.)</span>
+                <h1 class="font-heading text-4xl sm:text-5xl text-gold font-black tracking-wide mt-1">The Great Figureheads</h1>
+                <p class="font-serif text-gray-300 text-lg mt-2">Imagine the heavy, golden ledgers kept by the Imperial Archivists, tracking the blood, the spellcraft, and the ghosts of the five realms.</p>
+            </div>
+            <div class="space-y-12">
+                <!-- SECTION 1: FROSTBOUND DOMINION -->
+                <div class="bg-codex p-8 rounded-xl gold-border space-y-6">
+                    <div class="border-b border-gold/20 pb-4 flex justify-between items-end">
+                        <h2 class="font-heading text-2xl text-parchment font-bold">I. Frostbound Dominion Ledger</h2>
+                        <span class="text-xs text-blue-400 font-heading">The Mountain Throne</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs font-sans">
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-goldDim font-heading block mb-1">THE LATE MONARCHS</span>
+                            <strong class="text-white block text-sm font-heading">King Vane Ironjaw & Queen Sifra</strong>
+                            <span class="text-gray-400 block italic">Species: Deep Dwarf / Goliath hybrid</span>
+                            <p class="mt-2 text-gray-300">Famous for commissioning the Great Geothermal Piston that saved the city from the 1100 AC Century Freeze.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 980 AC   Died: 1190 AC (Chasm collapse)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10 ring-1 ring-gold/40 bg-gradient-to-b from-dark to-codexLighter">
+                            <span class="text-gold font-heading block mb-1">PRESENT SOVEREIGNS</span>
+                            <strong class="text-white block text-sm font-heading">King Torvald II & Queen Runa</strong>
+                            <span class="text-gray-400 block italic">Species: Pure Deep Dwarf</span>
+                            <p class="mt-2 text-gray-300">Currently ruling via martial law. Torvald wears a pressurized brass lung after an assassination attempt.</p>
+                            <span class="mt-3 block text-[10px] text-gray-400 font-mono">Born: 1088 AC / 1102 AC   (Living)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-blue-400 font-heading block mb-1">PROPHESIED HEIR</span>
+                            <strong class="text-white block text-sm font-heading">Crown Princess Freya Steam-Song</strong>
+                            <span class="text-gray-400 block italic">Species: Dwarf</span>
+                            <p class="mt-2 text-gray-300">The first royal born with sight in four generations; prophesied to lead the Dwarves back to the sun.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 1228 AC   (Living)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-purple-400 font-heading block mb-1">STATE MAGUS</span>
+                            <strong class="text-white block text-sm font-heading">Master Cryo-Weaver Kori</strong>
+                            <span class="text-gray-400 block italic">Species: Deep Dwarf</span>
+                            <p class="mt-2 text-gray-300">Famous for casting 'Absolute Zero' to instantly freeze an erupting subterranean magma pocket in 1210 AC.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 1150 AC   (Living)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-amber-400 font-heading block mb-1">HISTORICAL ICON</span>
+                            <strong class="text-white block text-sm font-heading">High Mechanist Thorgar</strong>
+                            <span class="text-gray-400 block italic">Species: Deep Dwarf</span>
+                            <p class="mt-2 text-gray-300">Invented the first titanium 'Sky-Tether' link used to tie down Skyport Aetherhold.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 42 AC   Died: 310 AC (Old age)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-emerald-400 font-heading block mb-1">MODERN CELEBRITY</span>
+                            <strong class="text-white block text-sm font-heading">Lyra Vane, The Zephyr</strong>
+                            <span class="text-gray-400 block italic">Species: Aether-Touched</span>
+                            <p class="mt-2 text-gray-300">The undisputed, four-time champion of the dangerous Cloud-Galleon Slalom races.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 1215 AC   (Living)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 2: EMBERFALL MAGOCRACY -->
+                <div class="bg-codex p-8 rounded-xl gold-border space-y-6">
+                    <div class="border-b border-orange-500/30 pb-4 flex justify-between items-end">
+                        <h2 class="font-heading text-2xl text-parchment font-bold">II. Emberfall Magocracy Ledger</h2>
+                        <span class="text-xs text-orange-400 font-heading">The Obsidian Spire</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs font-sans">
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-goldDim font-heading block mb-1">THE LATE SOVEREIGNS</span>
+                            <strong class="text-white block text-sm font-heading">Arch-Magus Pyros I & Vespera</strong>
+                            <span class="text-gray-400 block italic">Species: Fire Genasi / High Elf</span>
+                            <p class="mt-2 text-gray-300">Famous for intentionally sinking the Western Peninsula into the sea to form the steam-rich Basalt Basin.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 800 AC   Died: 1112 AC (Mana Overdose)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10 ring-1 ring-gold/40 bg-gradient-to-b from-dark to-codexLighter">
+                            <span class="text-gold font-heading block mb-1">PRESENT DIRECTORS</span>
+                            <strong class="text-white block text-sm font-heading">Grand Evoker Ignis Lex & Selene</strong>
+                            <span class="text-gray-400 block italic">Species: Fire Genasi</span>
+                            <p class="mt-2 text-gray-300">Authors of the 'Seven Corporate Laws of Thermomancy'. They hold the realm's spell-patents in an iron grip.</p>
+                            <span class="mt-3 block text-[10px] text-gray-400 font-mono">Born: 1040 AC / 1055 AC   (Living)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-orange-400 font-heading block mb-1">PROPHESIED HEIR</span>
+                            <strong class="text-white block text-sm font-heading">Arch-Neophyte Solanna Lex</strong>
+                            <span class="text-gray-400 block italic">Species: Fire Genasi</span>
+                            <p class="mt-2 text-gray-300">Born with pure white plasma for hair; she successfully cast her first Tier-4 Fireball at age four.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 1225 AC   (Living)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-purple-400 font-heading block mb-1">SUPREME ARCH-MAGE</span>
+                            <strong class="text-white block text-sm font-heading">Azimuth The Unburnt</strong>
+                            <span class="text-gray-400 block italic">Species: Fire Genasi</span>
+                            <p class="mt-2 text-gray-300">The most feared battle-mage alive; permanently resides inside the superheated plasma chamber of the Shard-Forge.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 1111 AC   (Living)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-amber-400 font-heading block mb-1">HISTORICAL LEGEND</span>
+                            <strong class="text-white block text-sm font-heading">Morwen The Glass-Maker</strong>
+                            <span class="text-gray-400 block italic">Species: High Elf</span>
+                            <p class="mt-2 text-gray-300">Wrote the original 'Standard Universal Model of the Aether' on a single massive slab of volcanic glass.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 12 BCE   Died: 450 AC (Natural)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-emerald-400 font-heading block mb-1">MODERN PRODIGY</span>
+                            <strong class="text-white block text-sm font-heading">Kaelen Vox</strong>
+                            <span class="text-gray-400 block italic">Species: Human</span>
+                            <p class="mt-2 text-gray-300">Invented the 'Pocket Ley-Link', allowing normal citizens to turn on household lights via ambient mana.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 1219 AC   (Living)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 3: GOLDEN DUNES CONFEDERACY (Corrected missing "Ledger") -->
+                <div class="bg-codex p-8 rounded-xl gold-border space-y-6">
+                    <div class="border-b border-amber-500/30 pb-4 flex justify-between items-end">
+                        <h2 class="font-heading text-2xl text-parchment font-bold">III. Golden Dunes Confederacy Ledger</h2>
+                        <span class="text-xs text-amber-400 font-heading">The Solar Syndicate</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs font-sans">
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-goldDim font-heading block mb-1">THE LATE PATRIARCHS</span>
+                            <strong class="text-white block text-sm font-heading">Solarch Darius I & Queen Amara</strong>
+                            <span class="text-gray-400 block italic">Species: Human / Djinn-Blooded</span>
+                            <p class="mt-2 text-gray-300">Famous for signing the 'Great Oasis Monopoly', cutting off free water to the Southern Nomads.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 910 AC   Died: 1145 AC (Poisoned wine)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10 ring-1 ring-gold/40 bg-gradient-to-b from-dark to-codexLighter">
+                            <span class="text-gold font-heading block mb-1">PRESENT SOLARCH</span>
+                            <strong class="text-white block text-sm font-heading">Solarch Malek The Golden & Nefertari</strong>
+                            <span class="text-gray-400 block italic">Species: Human</span>
+                            <p class="mt-2 text-gray-300">Runs the realm like a central bank. Wears a custom suit of woven, flexible 24-karat chainmail.</p>
+                            <span class="mt-3 block text-[10px] text-gray-400 font-mono">Born: 1160 AC / 1172 AC   (Living)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-amber-400 font-heading block mb-1">PROPHESIED HEIR</span>
+                            <strong class="text-white block text-sm font-heading">Prince Kasim Al-Sunspire</strong>
+                            <span class="text-gray-400 block italic">Species: Human / Djinn-Blood</span>
+                            <p class="mt-2 text-gray-300">Can sweat pure, drinkable condensation when subjected to extreme duress; viewed as a living holy relic.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 1222 AC   (Living)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-purple-400 font-heading block mb-1">MASTER MIRAGE-WEAVER</span>
+                            <strong class="text-white block text-sm font-heading">Zahra The Unseen</strong>
+                            <span class="text-gray-400 block italic">Species: Djinn-Blooded</span>
+                            <p class="mt-2 text-gray-300">Able to cast a city-wide optical illusion that makes Sunspire appear 5 miles to the left to fool invading armies.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 1180 AC   (Living)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-amber-400 font-heading block mb-1">HISTORICAL FATHER</span>
+                            <strong class="text-white block text-sm font-heading">Kadir The First Merchant</strong>
+                            <span class="text-gray-400 block italic">Species: Human</span>
+                            <p class="mt-2 text-gray-300">Legend says he won the coordinates to the Oasis of Zahar in a game of loaded dice against a starving God.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 105 BCE   Died: 12 AC (Dehydration)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-emerald-400 font-heading block mb-1">CURRENT SENSATION</span>
+                            <strong class="text-white block text-sm font-heading">Tariq The Sand-Dancer</strong>
+                            <span class="text-gray-400 block italic">Species: Tabaxi</span>
+                            <p class="mt-2 text-gray-300">A legendary cat-burglar who successfully stole the Solarch's left golden sandal right off his foot during a banquet.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 1211 AC   (Living)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 4: TEMPEST MARITIME UNION (Corrected missing "Ledger") -->
+                <div class="bg-codex p-8 rounded-xl gold-border space-y-6">
+                    <div class="border-b border-cyan-500/30 pb-4 flex justify-between items-end">
+                        <h2 class="font-heading text-2xl text-parchment font-bold">IV. Tempest Maritime Union Ledger</h2>
+                        <span class="text-xs text-cyan-400 font-heading">The Admiralty Board</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs font-sans">
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-goldDim font-heading block mb-1">THE LATE ADMIRALS</span>
+                            <strong class="text-white block text-sm font-heading">Grand Admiral Karr & Lady Vane</strong>
+                            <span class="text-gray-400 block italic">Species: Sea-Orc / Human</span>
+                            <p class="mt-2 text-gray-300">Famous for lashing 40 decommissioned frigates together to form the permanent foundations of Stormhold.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 920 AC   Died: 1111 AC (Lost at sea)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10 ring-1 ring-gold/40 bg-gradient-to-b from-dark to-codexLighter">
+                            <span class="text-gold font-heading block mb-1">PRESENT FIRST CAPTAIN</span>
+                            <strong class="text-white block text-sm font-heading">Admiral Maeve & Consort Finn</strong>
+                            <span class="text-gray-400 block italic">Species: Human / Triton</span>
+                            <p class="mt-2 text-gray-300">Maeve replaced her severed left arm with a fully functional, spring-loaded heavy mithril boarding hook.</p>
+                            <span class="mt-3 block text-[10px] text-gray-400 font-mono">Born: 1175 AC / 1180 AC   (Living)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-cyan-400 font-heading block mb-1">PROPHESIED CADET</span>
+                            <strong class="text-white block text-sm font-heading">Commodore-in-Waiting Jack</strong>
+                            <span class="text-gray-400 block italic">Species: Half-Triton</span>
+                            <p class="mt-2 text-gray-300">Can breathe underwater for up to six hours; currently serving anonymously as a deckhand to 'learn the salt'.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 1226 AC   (Living)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-purple-400 font-heading block mb-1">FLEET TIDE-CALLER</span>
+                            <strong class="text-white block text-sm font-heading">High Priestess Morwenna</strong>
+                            <span class="text-gray-400 block italic">Species: Triton</span>
+                            <p class="mt-2 text-gray-300">Able to summon localized 40-foot rogue waves to swallow pirate vessels that fail to pay the Union toll.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 1130 AC   (Living)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-amber-400 font-heading block mb-1">HISTORICAL DREADNOUGHT</span>
+                            <strong class="text-white block text-sm font-heading">Captain 'Black-Lung' Vance</strong>
+                            <span class="text-gray-400 block italic">Species: Human</span>
+                            <p class="mt-2 text-gray-300">Successfully harpooned and killed the 'Great Leviathan of the Drowned Reach', lighting the city on its oil for 80 years.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 210 AC   Died: 295 AC (Swallowed whole)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-emerald-400 font-heading block mb-1">CURRENT REBEL</span>
+                            <strong class="text-white block text-sm font-heading">'Slippery' Barnaby</strong>
+                            <span class="text-gray-400 block italic">Species: Otter-Folk (Lutra)</span>
+                            <p class="mt-2 text-gray-300">An infamous smuggler who has slipped past the massive Maw-Gate iron clamps 14 consecutive times.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 1214 AC   (Living)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 5: THE ROOT COUNCIL (Corrected missing "Ledger") -->
+                <div class="bg-codex p-8 rounded-xl gold-border space-y-6">
+                    <div class="border-b border-emerald-500/30 pb-4 flex justify-between items-end">
+                        <h2 class="font-heading text-2xl text-parchment font-bold">V. The Root Council Ledger</h2>
+                        <span class="text-xs text-emerald-400 font-heading">The Elder Circle</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs font-sans">
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-goldDim font-heading block mb-1">THE LATE ELDERS</span>
+                            <strong class="text-white block text-sm font-heading">Arch-Druidess Caelia & Treant Oakhaven</strong>
+                            <span class="text-gray-400 block italic">Species: Sylvari / Living Oak</span>
+                            <p class="mt-2 text-gray-300">Intentionally allowed their physical bodies to be composted into the soil to cure the 'Root-Rot Plague' of 950 AC.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 410 AC   Died: 950 AC (Transmuted)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10 ring-1 ring-gold/40 bg-gradient-to-b from-dark to-codexLighter">
+                            <span class="text-gold font-heading block mb-1">PRESENT SPEAKER</span>
+                            <strong class="text-white block text-sm font-heading">Archdruidess Vaelin & Consort Thrice-Bloomed</strong>
+                            <span class="text-gray-400 block italic">Species: Sylvari / Treant</span>
+                            <p class="mt-2 text-gray-300">Vaelin does not speak aloud; her thoughts echo telepathically inside the mind of anyone standing on grass.</p>
+                            <span class="mt-3 block text-[10px] text-gray-400 font-mono">Born: 960 AC   (Living)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-emerald-400 font-heading block mb-1">PROPHESIED SEEDLING</span>
+                            <strong class="text-white block text-sm font-heading">The Sproutling, 'Green-Grip'</strong>
+                            <span class="text-gray-400 block italic">Species: Faerie/Sylvari</span>
+                            <p class="mt-2 text-gray-300">A child found inside a sealed, glowing amber lotus; prophesied to either re-seed or kill the World Tree.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 1239 AC   (Living)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-purple-400 font-heading block mb-1">SUPREME FLORA-MAGUS</span>
+                            <strong class="text-white block text-sm font-heading">Bramble-Weaver Thorn</strong>
+                            <span class="text-gray-400 block italic">Species: Sylvari</span>
+                            <p class="mt-2 text-gray-300">Can snap his fingers to cause the wooden hafts of enemy spears to instantly sprout flesh-tearing iron thorns.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 1012 AC   (Living)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-amber-400 font-heading block mb-1">HISTORICAL MARTYR</span>
+                            <strong class="text-white block text-sm font-heading">Saint Yvaine The Sower</strong>
+                            <span class="text-gray-400 block italic">Species: High Elf</span>
+                            <p class="mt-2 text-gray-300">Carried the primordial seed of the World Tree across the boiling ash of the Calamity in her bare, burning palms.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 45 BCE   Died: 1 AC (Incinerated)</span>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-gold/10">
+                            <span class="text-emerald-400 font-heading block mb-1">CURRENT FOLK HERO</span>
+                            <strong class="text-white block text-sm font-heading">'Moss-Foot' Maggy</strong>
+                            <span class="text-gray-400 block italic">Species: Halfling</span>
+                            <p class="mt-2 text-gray-300">A legendary poacher-hunter who ties industrial logging executives to the upper branches of 1,000-foot redwoods.</p>
+                            <span class="mt-3 block text-[10px] text-gray-500 font-mono">Born: 1205 AC   (Living)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark border-t border-gold/20 px-6 py-2.5 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-400 z-40 flex-shrink-0">
+        <div class="flex items-center space-x-2"><span class="font-heading text-gold font-bold">ELARION</span><span class="text-gray-600">|</span><span> Imperial Archives Vol. I</span></div>
+        <div class="flex items-center space-x-4 mt-1 sm:mt-0">
+            <span>Archivist: <strong class="text-parchment font-heading">Cappy Bara</strong></span>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

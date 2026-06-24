@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elarion Codex | Sovereign Nations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { dark: '#0b0d12', codex: '#131722', codexLighter: '#1d2333', gold: '#d4af37', goldDim: '#997a15', parchment: '#f1e4c3' },
+                    fontFamily: { serif: ['"Cormorant Garamond"', 'serif'], heading: ['Cinzel', 'serif'], sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans flex flex-col h-screen select-none bg-dark text-gray-200">
+    <header class="bg-dark border-b border-gold/30 px-6 py-4 flex justify-between items-center z-40 flex-shrink-0 shadow-lg">
+        <a href="index.html" class="flex items-center space-x-3 cursor-pointer">
+            <svg class="w-9 h-9 text-gold animate-spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            <div>
+                <span class="font-heading text-2xl md:text-3xl font-black tracking-widest text-gold">ELARION</span>
+                <span class="text-xs md:text-sm tracking-[0.25em] text-goldDim block -mt-1 font-heading font-bold">THE IMPERIAL CODEX</span>
+            </div>
+        </a>
+        <nav class="hidden lg:flex items-center space-x-2 font-heading text-sm xl:text-base font-bold tracking-wider">
+            <a href="index.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">WORLD MAP</a>
+            <a href="nations.html" class="nav-btn px-4 py-2 rounded text-gold bg-gold/10 border border-gold/40">NATIONS</a>
+            <a href="cities.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">CITIES</a>
+            <a href="species.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">SPECIES</a>
+            <a href="characters.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">CHARACTERS</a>
+            <a href="timeline.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">TIMELINE</a>
+            <a href="lore.html" class="nav-btn px-4 py-2 rounded text-gray-300 hover:text-parchment hover:bg-codex">LORE</a>
+        </nav>
+        <button onclick="openMobileMenu()" class="lg:hidden text-gold p-2 focus:outline-none">
+            <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </header>
+
+    <div id="mobile-menu-modal" class="fixed inset-0 bg-dark/98 backdrop-blur-2xl z-50 flex flex-col justify-center px-8 space-y-4 transition-all duration-200 opacity-0 pointer-events-none">
+        <button onclick="closeMobileMenu()" class="absolute top-6 right-6 text-gold p-2">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <span class="font-heading text-xs text-goldDim tracking-widest uppercase mb-4 block">Navigation</span>
+        <a href="index.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">WORLD MAP</a>
+        <a href="nations.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gold bg-gold/10 border-l-4 border-gold">NATIONS</a>
+        <a href="cities.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">CITIES</a>
+        <a href="species.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">SPECIES</a>
+        <a href="characters.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">CHARACTERS</a>
+        <a href="timeline.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">TIMELINE</a>
+        <a href="lore.html" class="mobile-nav-btn text-left py-3.5 px-4 rounded font-heading text-lg font-bold text-gray-300 border-l-4 border-transparent">LORE</a>
+    </div>
+
+    <main class="relative flex-1 overflow-y-auto bg-dark p-8 sm:p-12">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="border-b border-gold/30 pb-6">
+                <span class="text-goldDim font-heading tracking-[0.25em] text-xs font-bold block">GEOPOLITICAL SURVEY</span>
+                <h1 class="font-heading text-4xl sm:text-5xl text-gold font-black tracking-wide mt-1">The Five Sovereign Crowns</h1>
+                <p class="font-serif text-gray-300 text-lg mt-2">Imagine a shattered globe held together only by the fragile tension between five vastly different philosophies of survival.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Kingdom 1 -->
+                <div class="bg-codex gold-border p-8 rounded-lg flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-xs font-heading text-blue-400 font-bold tracking-widest">THE NORTHERN CRAGS</span>
+                                <h2 class="font-heading text-3xl text-parchment font-black mt-1">Frostbound Dominion</h2>
+                            </div>
+                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-300 text-xs font-heading rounded">Capital: Frostpeak</span>
+                        </div>
+                        <p class="font-serif text-gray-300 text-base mt-4 leading-relaxed">
+                            Imagine a brutalist, subterranean empire built inside hollowed-out glaciers. They view the surface world as soft and doomed, placing their faith entirely in the rhythm of the trip-hammer.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 pt-4 border-t border-gold/10 text-xs font-sans">
+                        <div><span class="text-gray-400 block mb-1 font-heading">THE STRENGTH</span><strong class="text-emerald-400">Impenetrable natural mountain ramparts & infinite iron reserves.</strong></div>
+                        <div><span class="text-gray-400 block mb-1 font-heading">THE GREAT NEED</span><strong class="text-red-400">Arable topsoil, citrus (scurvy protection), and heavy wool.</strong></div>
+                        <div><span class="text-gray-400 block mb-1 font-heading">COMMERCIAL EXPORT</span><strong class="text-gray-200">Runesteel Ingots & Cryo-Gems</strong></div>
+                        <div><span class="text-gray-400 block mb-1 font-heading">DRIVING TECHNOLOGY</span><strong class="text-gold">Geothermal Cryo-Steam Engines</strong></div>
+                    </div>
+                </div>
+                <!-- Kingdom 2 -->
+                <div class="bg-codex gold-border p-8 rounded-lg flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-xs font-heading text-orange-400 font-bold tracking-widest">THE VOLCANIC CALDERA</span>
+                                <h2 class="font-heading text-3xl text-parchment font-black mt-1">Emberfall Magocracy</h2>
+                            </div>
+                            <span class="px-3 py-1 bg-orange-500/10 border border-orange-500/30 text-orange-300 text-xs font-heading rounded">Capital: Diamondreach</span>
+                        </div>
+                        <p class="font-serif text-gray-300 text-base mt-4 leading-relaxed">
+                            Imagine a society where your societal rank is dictated purely by the decibels of your incantations. Ruled by corporate spell-syndicates who patent the very laws of physics.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 pt-4 border-t border-gold/10 text-xs font-sans">
+                        <div><span class="text-gray-400 block mb-1 font-heading">THE STRENGTH</span><strong class="text-emerald-400">Absolute, unchallenged battlefield air & artillery superiority.</strong></div>
+                        <div><span class="text-gray-400 block mb-1 font-heading">THE GREAT NEED</span><strong class="text-red-400">Stable, non-shifting foundation stone & liquid coolants.</strong></div>
+                        <div><span class="text-gray-400 block mb-1 font-heading">COMMERCIAL EXPORT</span><strong class="text-gray-200">Data-Encoded Spell Prisms</strong></div>
+                        <div><span class="text-gray-400 block mb-1 font-heading">DRIVING TECHNOLOGY</span><strong class="text-gold">Hard-Light Arcane Weaving</strong></div>
+                    </div>
+                </div>
+                <!-- Kingdom 3 -->
+                <div class="bg-codex gold-border p-8 rounded-lg flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-xs font-heading text-amber-400 font-bold tracking-widest">THE ENDLESS WASTES</span>
+                                <h2 class="font-heading text-3xl text-parchment font-black mt-1">Golden Dunes Confederacy</h2>
+                            </div>
+                            <span class="px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-heading rounded">Capital: Sunspire</span>
+                        </div>
+                        <p class="font-serif text-gray-300 text-base mt-4 leading-relaxed">
+                            Imagine an ultra-capitalist web of merchant princes who bought their independence with water. They treat the scorching desert sun not as an enemy, but as an infinite furnace to be focused.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 pt-4 border-t border-gold/10 text-xs font-sans">
+                        <div><span class="text-gray-400 block mb-1 font-heading">THE STRENGTH</span><strong class="text-emerald-400">Monopoly on subterranean deep fresh water aquifers.</strong></div>
+                        <div><span class="text-gray-400 block mb-1 font-heading">THE GREAT NEED</span><strong class="text-red-400">Heavy structural hardwoods and shade-yielding flora.</strong></div>
+                        <div><span class="text-gray-400 block mb-1 font-heading">COMMERCIAL EXPORT</span><strong class="text-gray-200">Solar-Forged Glass & Bullion</strong></div>
+                        <div><span class="text-gray-400 block mb-1 font-heading">DRIVING TECHNOLOGY</span><strong class="text-gold">Thermal-Hydraulic Sun-Towers</strong></div>
+                    </div>
+                </div>
+                <!-- Kingdom 4 -->
+                <div class="bg-codex gold-border p-8 rounded-lg flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-xs font-heading text-cyan-400 font-bold tracking-widest">THE MONSOON STRAITS</span>
+                                <h2 class="font-heading text-3xl text-parchment font-black mt-1">Tempest Maritime Union</h2>
+                            </div>
+                            <span class="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-heading rounded">Capital: Stormhold</span>
+                        </div>
+                        <p class="font-serif text-gray-300 text-base mt-4 leading-relaxed">
+                            Imagine a floating meritocracy of lashed galleons and sea-fortresses that perpetually rides the outer hurricane wall. To them, land-dwellers are merely people waiting to drown.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 pt-4 border-t border-gold/10 text-xs font-sans">
+                        <div><span class="text-gray-400 block mb-1 font-heading">THE STRENGTH</span><strong class="text-emerald-400">Unrivaled naval logistics & perfect storm prediction.</strong></div>
+                        <div><span class="text-gray-400 block mb-1 font-heading">THE GREAT NEED</span><strong class="text-red-400">Raw non-corroding iron ore (salt spray ruins theirs).</strong></div>
+                        <div><span class="text-gray-400 block mb-1 font-heading">COMMERCIAL EXPORT</span><strong class="text-gray-200">Refined Leviathan Oil & Pearls</strong></div>
+                        <div><span class="text-gray-400 block mb-1 font-heading">DRIVING TECHNOLOGY</span><strong class="text-gold">Kinetic Wave-Harnessing Sails</strong></div>
+                    </div>
+                </div>
+                <!-- Kingdom 5 -->
+                <div class="bg-codex gold-border p-8 rounded-lg flex flex-col justify-between space-y-6 lg:col-span-2">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-xs font-heading text-emerald-400 font-bold tracking-widest">THE PRIMORDIAL TAPROOT</span>
+                                <h2 class="font-heading text-3xl text-parchment font-black mt-1">The Root Council (The Heartlands)</h2>
+                            </div>
+                            <span class="px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-heading rounded">Capital: Eternal Greenwood</span>
+                        </div>
+                        <p class="font-serif text-gray-300 text-base mt-4 leading-relaxed max-w-4xl">
+                            Imagine an ancient, sentient ecosystem that decided to form a government purely to keep the industrial nations from turning it into paper. They do not build cities; they coax the World Tree's gargantuan roots to open up hollow, living cathedral chambers for them to inhabit.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-gold/10 text-xs font-sans">
+                        <div><span class="text-gray-400 block mb-1 font-heading">THE STRENGTH</span><strong class="text-emerald-400">Self-repairing architecture & infinite sustainable food.</strong></div>
+                        <div><span class="text-gray-400 block mb-1 font-heading">THE GREAT NEED</span><strong class="text-red-400">Refined mineral salts and forged heavy steel blades.</strong></div>
+                        <div><span class="text-gray-400 block mb-1 font-heading">COMMERCIAL EXPORT</span><strong class="text-gray-200">Living Iron-Wood & Soul Elixirs</strong></div>
+                        <div><span class="text-gray-400 block mb-1 font-heading">DRIVING TECHNOLOGY</span><strong class="text-gold">Accelerated Hyper-Botany</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark border-t border-gold/20 px-6 py-2.5 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-400 z-40 flex-shrink-0">
+        <div class="flex items-center space-x-2"><span class="font-heading text-gold font-bold">ELARION</span><span class="text-gray-600">|</span><span> Imperial Archives Vol. I</span></div>
+        <div class="flex items-center space-x-4 mt-1 sm:mt-0">
+            <span>Archivist: <strong class="text-parchment font-heading">Cappy Bara</strong></span>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
